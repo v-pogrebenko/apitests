@@ -1,2 +1,2 @@
 # apitests
-Contains various API tests.
+Contains various API tests (WIP).
