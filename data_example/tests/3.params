@@ -1,0 +1,7 @@
+{
+	"Type" : "POST",
+	"URI" : "https://api.github.com/markdown",	
+	"Headers": {
+		"Content-type": "application/json"
+	}
+}
