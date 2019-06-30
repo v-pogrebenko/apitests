@@ -54,7 +54,7 @@ class Test:
         # establishes connection, forms and prepeares a request then sends it.
         res = requests.Session().send(requests.Request(
             ty, uri, headers=headers, data=content).prepare())
-        res_content = res.content.decode()
+        res_content = res.content.decode(self._encoding)
         # save result to a file.
         with open(os.path.join(self._results, name + ".result"), "w", encoding=self._encoding) as r:
             r.write(res_content)
