@@ -5,7 +5,7 @@ import requests
 
 class Test:
     def __init__(self, results_dir, sample_dir, tests_dir, errors_dir, encoding="utf-8"):
-        """Class inintialization.
+        """Class initialization.
 
         :param results_dir: directory for restful responses.
         :param sample_dir: directory for samples.
