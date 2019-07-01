@@ -1,0 +1,24 @@
+{
+    "Headers": {
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Expose-Headers": "ETag, Link, Location, Retry-After, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval, X-GitHub-Media-Type",
+        "Content-Length": "37",
+        "Content-Security-Policy": "default-src 'none'",
+        "Content-Type": "text/html;charset=utf-8",
+        "Date": "Mon, 01 Jul 2019 13:58:13 GMT",
+        "Referrer-Policy": "origin-when-cross-origin, strict-origin-when-cross-origin",
+        "Server": "GitHub.com",
+        "Status": "200 OK",
+        "Strict-Transport-Security": "max-age=31536000; includeSubdomains; preload",
+        "Vary": "Accept-Encoding",
+        "X-CommonMarker-Version": "0.20.0",
+        "X-Content-Type-Options": "nosniff",
+        "X-Frame-Options": "deny",
+        "X-GitHub-Request-Id": "EAF5:17D65:3091EFD:3CA70ED:5D1A1175",
+        "X-RateLimit-Limit": "60",
+        "X-RateLimit-Remaining": "59",
+        "X-RateLimit-Reset": "1561993093",
+        "X-XSS-Protection": "1; mode=block"
+    },
+    "Status": 200
+}

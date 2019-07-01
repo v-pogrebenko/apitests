@@ -1,0 +1,8 @@
+{
+    "Headers": {
+        "Cache-Control": "no-cache",
+        "Connection": "close",
+        "Content-Type": "text/html"
+    },
+    "Status": 403
+}
