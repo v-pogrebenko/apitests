@@ -1,10 +1,11 @@
-import os
 import json
+import os
+
 import requests
 
 
 class Test:
-        """RESTful test class.
+    """RESTful test class.
 
     Usage example:
 
@@ -14,6 +15,7 @@ class Test:
         "tests_dir",
         "errors_dir",
     ).run()"""
+
     def __init__(self, results_dir, sample_dir, tests_dir, errors_dir, encoding="utf-8"):
         """Class initialization.
 
@@ -32,7 +34,7 @@ class Test:
         force_dir(results_dir)
         self._results = results_dir
         force_dir(sample_dir)
-        self._sample = sample_dir
+        self._samples = sample_dir
         self._tests = tests_dir
         force_dir(errors_dir)
         self._errors = errors_dir
@@ -61,7 +63,7 @@ class Test:
         :param content: request content.
         :param name: destination file name."""
 
-        # establishes connection, forms and prepeares a request then sends it.
+        # establishes connection, forms and prepares a request then sends it.
         res = requests.Session().send(requests.Request(
             ty, uri, headers=headers, data=content).prepare())
         res_content = res.content.decode(self._encoding)
@@ -78,19 +80,20 @@ class Test:
         :param res: response contents."""
 
         # complete file name.
-        fn = os.path.join(self._samples, name + ".sample")
+        sn = os.path.join(self._samples, name + ".sample")
         rn = os.path.join(self._results, name + ".result")
-        # compare result to sample.
-        try:
-            with open(fn, encoding=self._encoding) as s:
-                with open(rn, encoding=self._encoding) as r:
-                    # write an error if contents are not equal.
-                    if s.read() != r.read():
-                        self._write_err(name)
-        except FileNotFoundError:
-            # if sample not exists (i.e. first run), make it.
-            with open(fn, "w", encoding=self._encoding) as s:
+        # if sample not exists (i.e. first run), make it.
+        if not os.path.exists(sn):
+            with open(sn, "w", encoding=self._encoding) as s:
                 s.write(res)
+
+            return
+        # compare result to sample.
+        with open(sn, encoding=self._encoding) as s:
+            with open(rn, encoding=self._encoding) as r:
+                # write an error if contents are not equal.
+                if s.read() != r.read():
+                    self._write_err(name)
 
     def _get_names(self):
         """Iterates through test files and get parameter names
