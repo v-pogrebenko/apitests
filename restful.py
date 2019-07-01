@@ -4,6 +4,16 @@ import requests
 
 
 class Test:
+        """RESTful test class.
+
+    Usage example:
+
+    restful.Test(
+        "results_dir",
+        "sample_dir",
+        "tests_dir",
+        "errors_dir",
+    ).run()"""
     def __init__(self, results_dir, sample_dir, tests_dir, errors_dir, encoding="utf-8"):
         """Class initialization.
 
@@ -68,13 +78,15 @@ class Test:
         :param res: response contents."""
 
         # complete file name.
-        fn = os.path.join(self._sample, name + ".sample")
+        fn = os.path.join(self._samples, name + ".sample")
+        rn = os.path.join(self._results, name + ".result")
         # compare result to sample.
         try:
             with open(fn, encoding=self._encoding) as s:
-                # write an error if contents are not equal.
-                if s.read() != res:
-                    self._write_err(name)
+                with open(rn, encoding=self._encoding) as r:
+                    # write an error if contents are not equal.
+                    if s.read() != r.read():
+                        self._write_err(name)
         except FileNotFoundError:
             # if sample not exists (i.e. first run), make it.
             with open(fn, "w", encoding=self._encoding) as s:
